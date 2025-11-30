@@ -1,4 +1,6 @@
-package com.microservicio.publicacion.service;
+﻿package com.microservicio.publicacion.service;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,7 @@ public class PublicacionService {
 
     // Método para guardar la publicación
     public Publicacion guardarPublicacion(Publicacion publicacion) {
-        
+
         if (publicacion.getTitulo() == null || publicacion.getTitulo().isEmpty()) {
             throw new IllegalArgumentException("El título no puede estar vacío");
         }
@@ -31,5 +33,10 @@ public class PublicacionService {
             throw new IllegalArgumentException("El tipo de contrato no puede estar vacío");
         }
         return publicacionRepository.save(publicacion);
+    }
+    
+    // Método para listar todas las publicaciones
+    public List<Publicacion> listarPublicaciones() {
+        return publicacionRepository.findAll();
     }
 }

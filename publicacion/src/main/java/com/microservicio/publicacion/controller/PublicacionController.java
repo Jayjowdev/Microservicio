@@ -1,7 +1,10 @@
-package com.microservicio.publicacion.controller;
+﻿package com.microservicio.publicacion.controller;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,5 +24,10 @@ public class PublicacionController {
     @PostMapping("/guardar")
     public Publicacion guardarPublicacion(@RequestBody Publicacion publicacion) {
         return publicacionService.guardarPublicacion(publicacion);
+    }
+    
+    @GetMapping("/listar")
+    public List<Publicacion> listarPublicaciones() {
+        return publicacionService.listarPublicaciones();
     }
 }
